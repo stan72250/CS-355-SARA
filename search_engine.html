@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<title>Search Engine</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="Styling/searchbar.css">
+<link rel="stylesheet" href="Styling/style.css">
+</head>
+<body>
+<div class="container mt-3">
+<div align ="center">
+<a class="btn btn-outline-success" href="admin.html">Administration Panel</a>
+</div>
+<h2>Search Engine</h2>
+<p>Enter a search term below:</p>
+<div class="container-search">
+<form id="webcrawl" method="post" enctype="multipart/form-data">
+ <div class="input-group mb-3">	
+  <input class="form-control" id="search" type="text"> 
+  
+  <div class="input-group-append">
+    <input type="submit" value="Search" class="btn btn-outline-secondary" type="submit">
+  </div>
+  
+  </div>
+  
+  <input type="checkbox" name="case" id="case"> Case-Insensitive
+  <input type="checkbox" name="partial" id="partial"> Allow Partial Terms
+ 
+</form>
+ </div>
+ <br>
+<div class="table-responsive-md">
+<table class="table table-striped" id="myTable2">
+    <thead>
+        <tr>
+			<th class ="cb"><input type="checkbox" name="checked" id="checkAll"></th>
+            <th>Title</th>
+            <th>URL</th>		
+			<th>Description</th>	
+        </tr>
+  </thead>
+  <tbody id="searchResults">
+</tbody>
+</table>
+</div>
+<br>
+
+
+<div class="center">
+ <div class="row">
+  <div class="col text-center">
+	<button id="exportCSV" type="button" class="btn btn-outline-success">Export to CSV</button>
+	<button id="exportJSON" type="button" class="btn btn-outline-primary">Export to JSON</button>
+	<button id="exportXML" type="button" class="btn btn-outline-danger">Export to XML</button>
+  </div>
+ </div>
+</div>
+
+<h2 style="text-align:center" id="homepage"><a href ="https://venus.cs.qc.cuny.edu/~list9158/cs355/index.html">Click here to return to the home page.</a></h2>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#webcrawl').on('submit', function(e){
+			var results = [];
+			var i = 0;
+			e.preventDefault();
+			var search = $('#search').val();
+			var checkVal = 0;
+			if($('#case').is(":checked")) checkVal++;
+			if($('#partial').is(":checked")) checkVal += 2;
+			$.ajax({
+				url: "databaseSearch.php",
+				method: "POST",
+				data: {search: search, value: checkVal},
+				datatype: "json",
+				success: function(data){
+					var response = jQuery.parseJSON(data);
+					table = $('#searchResults');
+					table.empty();
+					var data = '';
+					var urlArr = [response.length];
+					for(var i = 0; i < response.length; i++){
+						if(!urlArr.includes(response[i]["url"])){
+							urlArr[i] = response[i]["url"];
+							data += '<tr>';
+							data += '<td class="cb" id="chkbox"><input type="checkbox" name="checked" class="idRow"></td>';
+							data += '<td id="title">' + response[i]["title"] + '</td>';
+							data += '<td id="url"><a id="link" href="' + response[i]["url"] + '" target="_blank">' + response[i]["url"] + '</a></td>';
+							data += '<td id="description">' + response[i]["description"] + '</td>';
+							data += '</tr>';
+						}
+					}
+					table.append(data);
+				}
+			})
+		});
+	})
+</script>
+<script src="Scripts/search-engine-api.js"></script>
+</body>
+</html>

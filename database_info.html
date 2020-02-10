@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Database Info</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="Styling/searchbar.css">
+<link rel="stylesheet" href="Styling/style.css">
+</head>
+<body>
+<div class="container mt-3">
+<h2>MySQL Stats</h2>
+<ul>
+<li>DB Instance: MySQL 8.0</li>
+<li>DB Name: SARA</li>
+<li>Hosted at: Amazon AWS (Amazon Relational Database Service)</li>
+</ul>
+<br>
+<h4>page</h4>
+<div class="table-responsive-md">
+<table class="table table-bordered">
+	<tbody>
+		<tr>
+			<th>Column</th>
+			<th>Type</th>
+			<th>Default Value</th>
+			<th>Nullable</th>
+			<th>Extra</th>
+		</tr>
+		<tr>
+			<td>pageId</td>
+			<td>int(10) unsigned</td>
+			<td></td>
+			<td>NO</td>
+			<td>auto_increment</td>
+		</tr>
+		<tr>
+			<td>url</td>
+			<td>varchar(255)</td>
+			<td></td>
+			<td>NO</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>title</td>
+			<td>varchar(255)</td>
+			<td></td>
+			<td>YES</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>description</td>
+			<td>varchar(255)</td>
+			<td></td>
+			<td>YES</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>lastModified</td>
+			<td>timestamp</td>
+			<td>CURRENT_TIMESTAMP</td>
+			<td>YES</td>
+			<td>DEFAULT_GENERATED</td>
+		</tr>
+		<tr>
+			<td>lastIndexed</td>
+			<td>timestamp</td>
+			<td>CURRENT_TIMESTAMP</td>
+			<td>YES</td>
+			<td>DEFAULT_GENERATED</td>
+		</tr>
+		<tr>
+			<td>timeToIndex</td>
+			<td>int(10) unsigned</td>
+			<td></td>
+			<td>YES</td>
+			<td></td>
+		</tr>
+	</tbody>
+</table>
+</div>
+<br>
+<h4>page_word</h4>
+<div class="table-responsive-md">
+<table class="table table-bordered">
+	<tbody>
+		<tr>
+			<th>Column</th>
+			<th>Type</th>
+			<th>Default Value</th>
+			<th>Nullable</th>
+			<th>Extra</th>
+		</tr>
+		<tr>
+			<td>pageWordId</td>
+			<td>int(10) unsigned</td>
+			<td></td>
+			<td>NO</td>
+			<td>auto_increment</td>
+		</tr>
+		<tr>
+			<td>pageId</td>
+			<td>int(10) unsigned</td>
+			<td></td>
+			<td>NO</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>wordId</td>
+			<td>int(10) unsigned</td>
+			<td></td>
+			<td>NO</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>freq</td>
+			<td>int(10) unsigned</td>
+			<td></td>
+			<td>NO</td>
+			<td></td>
+		</tr>		
+	</tbody>
+</table>
+</div>
+<br>
+<h4>search</h4>
+<div class="table-responsive-md">
+<table class="table table-bordered">
+	<tbody>
+		<tr>
+			<th>Column</th>
+			<th>Type</th>
+			<th>Default Value</th>
+			<th>Nullable</th>
+			<th>Extra</th>
+		</tr>
+		<tr>
+			<td>searchId</td>
+			<td>int(10) unsigned</td>
+			<td></td>
+			<td>NO</td>
+			<td>auto_increment</td>
+		</tr>
+		<tr>
+			<td>terms</td>
+			<td>varchar(255)</td>
+			<td></td>
+			<td>NO</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>count</td>
+			<td>int(10) unsigned</td>
+			<td></td>
+			<td>NO</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>searchDate</td>
+			<td>timestamp</td>
+			<td>CURRENT_TIMESTAMP</td>
+			<td>YES</td>
+			<td>DEFAULT_GENERATED</td>
+		</tr>
+		<tr>
+			<td>timeToSearch</td>
+			<td>int(10) unsigned</td>
+			<td></td>
+			<td>NO</td>
+			<td></td>
+		</tr>
+	</tbody>
+</table>
+</div>
+<br>
+<h4>word</h4>
+<div class="table-responsive-md">
+<table class="table table-bordered">
+	<tbody>
+		<tr>
+			<th>Column</th>
+			<th>Type</th>
+			<th>Default Value</th>
+			<th>Nullable</th>
+			<th>Extra</th>
+		</tr>
+		<tr>
+			<td>wordId</td>
+			<td>int(10) unsigned</td>
+			<td></td>
+			<td>NO</td>
+			<td>auto_increment</td>
+		</tr>
+		<tr>
+			<td>wordName</td>
+			<td>varchar(255)</td>
+			<td></td>
+			<td>NO</td>
+			<td></td>
+		</tr>
+	</tbody>
+</table>
+</div>
+<br>
+<div class="center">
+<div class="row">
+<div class="col text-center">
+<p>SARA Entity Relationship Diagram</p>
+<img src="er diagram.png" alt="ER Diagram" style="width:30%">
+</div>
+</div>
+</div>
+</div>
+<br>
+<h2 style="text-align:center" id="homepage"><a href ="https://venus.cs.qc.cuny.edu/~list9158/cs355/admin.html">Click here to return to the admin page.</a></h2>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

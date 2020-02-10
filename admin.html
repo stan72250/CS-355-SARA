@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Admin Panel</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="Styling/searchbar.css">
+<link rel="stylesheet" href="Styling/style.css">
+</head>
+<body>
+<div class="container mt-3">
+<h1>Administration Panel</h1>
+<p>Enter a URL in the field below to Index: </p>
+
+<form id="webcrawl" method="post" enctype="multipart/form-data">
+<div class="input-group mb-3">	
+  <input class="form-control" id="url" type="text"> 
+  <div class="input-group-append">
+    <input value="Index" class="btn btn-outline-secondary" type="submit">
+  </div>
+  </div>
+</form>
+</div>
+
+<div class="center">
+ <div class="row">
+  <div class="col text-center">
+	<a class="btn btn-outline-success" href="https://venus.cs.qc.cuny.edu/~list9158/cs355/database_info.html">MySQL DB Info</a>
+	<a class="btn btn-outline-primary" href="https://venus.cs.qc.cuny.edu/~list9158/cs355/index_history.html">Indexing History</a>
+	<a class="btn btn-outline-danger" href="https://venus.cs.qc.cuny.edu/~list9158/cs355/search_history.html">Search Stats</a>
+  </div>
+ </div>
+</div>
+<h2 style="text-align:center" id="homepage"><a href ="https://venus.cs.qc.cuny.edu/~list9158/cs355/search_engine.html">Click here to return to the search engine page.</a></h2>
+</body>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#webcrawl').on('submit',function(e){
+            var results = [];
+            var i = 0;
+            e.preventDefault();
+            var urlStr = $('#url').val();
+            $.ajax({
+                url:"webcrawler2.php",
+                method: "POST",
+                data: {url: urlStr},
+                datatype: "json",
+                success: function(data){
+                    console.log(data);
+					alert($('#url').val() + " Indexed");
+					$('#url').val('');
+                },
+				error: function(xhr, ajaxOptions, thrownError){
+					console.log(xhr.status);
+					console.log(xhr.responseText);
+					console.log(thrownError);
+				}
+            })
+        });
+    })
+</script>
+</html>

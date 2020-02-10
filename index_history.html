@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<title>Page Index History</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="Styling/searchbar.css">
+<link rel="stylesheet" href="Styling/style.css">
+</head>
+<body>
+<div class="container mt-3">
+<h2>Indexed Pages</h2>
+<div class="table-responsive-md">
+<table class="table table-bordered">
+	<tbody id="indexResults">
+		<tr>
+			<th>URL</th>
+			<th>Time to Index</th>
+			<th>Date Indexed</th>
+			<th>Last Modified</th>
+		</tr>
+	</tbody>
+</table>
+
+
+
+</div>
+</div>
+<h2 style="text-align:center" id="homepage"><a href ="https://venus.cs.qc.cuny.edu/~list9158/cs355/admin.html">Click here to return to the admin page.</a></h2>
+<script type="text/javascript">
+	window.onload = (function(){
+		$.ajax({
+			url: "indexResults.php",
+			method: "GET",
+			success: function(data){
+				var response = jQuery.parseJSON(data);
+				table = $("#indexResults");
+				for(var i = 0; i < response.length; i++){
+					data += '<tr>';
+					data += '<td>' + response[i]["url"] + '</td>';
+					data += '<td>' + response[i]["timeToIndex"] + '</td>';
+					data += '<td>' + response[i]["lastIndexed"] + '</td>';
+					data += '<td>' + response[i]["lastModified"] + '</td>';
+					data += '</tr>';
+				}
+				table.append(data);
+			}
+		});
+	})
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

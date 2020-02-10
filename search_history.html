@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Search History</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="Styling/searchbar.css">
+<link rel="stylesheet" href="Styling/style.css">
+</head>
+<body>
+<div class="container mt-3">
+
+
+<h2>Search History</h2>
+<div class="table-responsive-md">
+<table class="table table-bordered">
+	<tbody id="searchResults">
+		<tr>
+			<th>Search Date</th>
+			<th>Search Terms</th>
+			<th>Results</th>
+			<th>Search Time</th>
+		</tr>
+	</tbody>
+</table>
+</div>
+</div>
+<h2 style="text-align:center" id="homepage"><a href ="https://venus.cs.qc.cuny.edu/~list9158/cs355/admin.html">Click here to return to the admin page.</a></h2>
+<script type="text/javascript">
+	window.onload = (function(){
+		$.ajax({
+			url: "searchResults.php",
+			method: "GET",
+			success: function(data){
+				var response = jQuery.parseJSON(data);
+				table = $("#searchResults");
+				for(var i = 0; i < response.length; i++){
+					data += '<tr>';
+					data += '<td>' + response[i]["searchDate"] + '</td>';
+					data += '<td>' + response[i]["terms"] + '</td>';
+					data += '<td>' + response[i]["count"] + '</td>';
+					data += '<td>' + response[i]["timeToSearch"] + '</td>';
+					data += '</tr>';
+				}
+				table.append(data);
+			}
+		});
+	})
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>

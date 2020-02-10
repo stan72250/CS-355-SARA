@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<title>Fixed Search List</title>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="Styling/searchbar.css">
+<link rel="stylesheet" href="Styling/style.css">
+</head>
+<body>
+<div class="container mt-3">
+	<h2>Fixed List</h2>
+	<p>Choose a topic from the list below:</p>
+	<div class="form-group has-search">
+	<span class="fa fa-search form-control-feedback"></span>
+  <input class="form-control" id="myInput" type="text" placeholder="Networking" disabled>
+ </div>
+
+<div class="table-responsive-md">
+<table class="table table-striped" id="myTable">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>URL</th>		
+			<th>Description</th>	
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>SDN</td>
+            <td><a id="link" href="https://www.opennetworking.org/sdn-definition/" target="_blank">https://www.opennetworking.org/sdn-definition/</a></td>
+			<td>SDN architecture enables the network control to become directly programmable and the underlying infrastructure to be abstracted for applications and network services.</td>	
+        </tr>
+        <tr>
+            <td>Types of Wireless Networks</td>
+            <td><a id="link" href="https://commotionwireless.net/docs/cck/networking/types-of-wireless-networks/" target="_blank">https://commotionwireless.net/docs/cck/networking/types-of-wireless-networks/</a></td>
+			<td>Community Technology Field Guide: (Re)Building Technology</td>
+		</tr>
+		<tr>
+			<td>Catalyst 4500 Series Switch Cisco IOS Software Configuration Guide, 12.2(25)EW - Understanding and Configuring VLANs [Cisco Catalyst 4500 Series Switches] - Cisco</td>
+			<td><a id="link" href="https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst4500/12-2/25ew/configuration/guide/conf/vlans.html" target="_blank">https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst4500/12-2/25ew/configuration/guide/conf/vlans.html</a></td>
+		    <td>Understanding and Configuring VLANs</td>
+		</tr>
+		<tr>
+			<td>What is Metro Ethernet? | Juniper Networks</td>
+			<td><a id="link" href="https://www.juniper.net/us/en/products-services/what-is/metro-ethernet/" target="_blank">https://www.juniper.net/us/en/products-services/what-is/metro-ethernet/</a></td>
+			<td>Metro Ethernet is an Ethernet transport network that provides point-to-point or multipoint connectivity services over a metropolitan area network (MAN).</td>
+		</tr>
+		<tr>
+			<td>What Is CIDR (Classless Inter-Domain Routing)? - KeyCDN Suppor</td>
+			<td><a id="link" href="https://www.keycdn.com/support/what-is-cidr" target="_blank">https://www.keycdn.com/support/what-is-cidr</a></td>
+			<td>CIDR (Classless Inter-Domain Routing) is an IP addressing scheme that improves the allocation of IP addresses. Read more.</td>
+		</tr>
+		<tr>
+			<td>What is a CDN? How does a CDN work? | Cloudflare</td>
+			<td><a id="link" href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn/" target="_blank">https://www.cloudflare.com/learning/cdn/what-is-a-cdn/</a></td>
+			<td>A content delivery network (CDN) refers to a geographically distributed group of servers which work together to provide fast delivery of Internet content. Learn more with this CDN guide.</td>
+		</tr>
+		<tr>
+			<td>What Is Network Security? - Cisco</td>
+			<td><a id="link" href="https://www.cisco.com/c/en/us/products/security/what-is-network-security.html" target="_blank">https://www.cisco.com/c/en/us/products/security/what-is-network-security.html</a></td>
+			<td>Get an overview of the networking technologies and products that protect your network and data. These include firewalls and security for mobile devices and wireless LANs.</td>
+		</tr>
+		<tr>
+			<td>Speedtest by Ookla - The Global Broadband Speed Test</td>
+			<td><a id="link" href="https://www.speedtest.net/" target="_blank">https://www.speedtest.net/</a></td>
+			<td>Test your Internet connection bandwidth to locations around the world with this interactive broadband speed test from Ookla</td>
+		</tr>
+		<tr>
+			<td>What is cloud computing? A beginner’s guide | Microsoft Azure</td>
+			<td><a id="link" href="https://azure.microsoft.com/en-us/overview/what-is-cloud-computing/" target="_blank">https://azure.microsoft.com/en-us/overview/what-is-cloud-computing/</a></td>
+			<td>What is cloud computing and how does cloud computing work? Learn the benefits of cloud computing. Discover how you use cloud computing services every day online.</td>
+		</tr>
+		<tr>
+			<td>Cisco - Global Home Page</td>
+			<td><a id="link" href="https://www.cisco.com/" target="_blank">https://www.cisco.com/</td>
+			<td>Cisco is the worldwide leader in IT, networking, and cybersecurity solutions. We help companies of all sizes transform how people connect, communicate, and collaborate.</td>
+		</tr>
+    </tbody>
+</table>
+</div>
+</div>
+<br>
+
+<h2 style="text-align:center" id="homepage"><a href ="https://venus.cs.qc.cuny.edu/~list9158/cs355/index.html">Click here to return to the home page.</a></h2>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script>
+$('#myInput').keyup(function() {
+    var $rows = $('#myTable tbody>tr');
+    var val = '^(?=.*\\b' + $.trim($(this).val()).split(/\s+/).join('\\b)(?=.*\\b') + ').*$',
+        reg = RegExp(val, 'i'),
+        text;
+    
+    $rows.show().filter(function() {
+        text = $(this).text().replace(/\s+/g, ' ');
+        return !reg.test(text);
+    }).hide();
+});
+</script>
+</body>
+</html>

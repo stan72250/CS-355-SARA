@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<title>Google API Search</title>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="Styling/searchbar.css">
+<link rel="stylesheet" href="Styling/style.css">
+</head>
+<body>
+<div class="container mt-3">
+	<h2>Search from Google</h2>
+	<p>Enter a search term below:</p>
+	<div class="input-group mb-3">	
+  <input class="form-control" id="myInput" type="text"> 
+  <div class="input-group-append">
+    <button id="searchGoogle" class="btn btn-outline-secondary" type="submit">
+	<i class="fa fa-search"></i>
+	</button>
+  </div>
+  </div>
+  
+<div class="table-responsive-md">
+<table class="table table-striped" id="myTable2">
+    <thead>
+        <tr>
+			<th class ="cb"><input type="checkbox" name="checked" id="checkAll"></th>
+            <th>Title</th>
+            <th>URL</th>		
+			<th>Description</th>	
+        </tr>
+  </thead>
+  <tbody id="myTable">
+</tbody>
+</table>
+ </div>
+<div class="center">
+ <div class="row">
+  <div class="col text-center">
+	<button id="exportCSV" type="button" class="btn btn-outline-success">Export to CSV</button>
+	<button id="exportJSON" type="button" class="btn btn-outline-primary">Export to JSON</button>
+	<button id="exportXML" type="button" class="btn btn-outline-danger">Export to XML</button>
+  </div>
+ </div>
+</div>
+</div>
+<br>
+<h2 style="text-align:center" id="homepage"><a href ="https://venus.cs.qc.cuny.edu/~list9158/cs355/index.html">Click here to return to the home page.</a></h2>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="Scripts/google-search_api.js"></script>
+</body>
+</html>
